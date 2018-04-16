@@ -83,11 +83,13 @@ void parse_file ( char * filename,
   FILE *f;
   char line[256];
   color c;
+  struct stack *cs;
 
   clear_screen(s);
   c.red = 0;
   c.green = 0;
   c.blue = 0;
+  cs = new_stack();
 
   if ( strcmp(filename, "stdin") == 0 ) 
     f = stdin;
@@ -100,6 +102,12 @@ void parse_file ( char * filename,
 
     if (*line == '#') {
       /* Do nothing because it's a comment */
+
+    } else if (strncmp(line, "push", strlen(line)) == 0) {
+      push(cs);
+
+    } else if (strncmp(line, "pop", strlen(line)) == ) {
+      pop(cs);
       
     } else if (strncmp(line, "sphere", strlen(line)) == 0) {
       double args[4];
