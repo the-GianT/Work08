@@ -73,9 +73,10 @@ void draw_polygons( struct matrix *polygons, screen s, color c ) {
                  polygons->m[0][point+2],
                  polygons->m[1][point+2],
                  s, c);
-    }
-  }
-}
+    } // end if statement
+    free(normal);
+  } // end for loop
+} // end draw_polygons function
 
 /*======== void add_box() ==========
   Inputs:   struct matrix * edges

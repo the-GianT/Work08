@@ -1,13 +1,16 @@
 OBJECTS= main.o draw.o display.o matrix.o parser.o gmath.o stack.o
-CFLAGS= -Wall
+CFLAGS= -Wall -g
 LDFLAGS= -lm
 CC= gcc
 
+run: main
+	./main script
+
 main: $(OBJECTS)
-	$(CC) -o main $(OBJECTS) $(LDFLAGS)
+	$(CC) -g -o main $(OBJECTS) $(LDFLAGS)
 
 main.o: main.c display.h draw.h ml6.h matrix.h parser.h
-	$(CC) -c main.c
+	$(CC) -g -c main.c
 
 draw.o: draw.c draw.h display.h ml6.h matrix.h gmath.h
 	$(CC) $(CFLAGS) -c draw.c
@@ -26,9 +29,6 @@ gmath.o: gmath.c gmath.h matrix.h
 
 stack.o: stack.c stack.h matrix.h
 	$(CC) $(CFLAGS) -c stack.c
-
-run: main
-	./main script
 
 clean:
 	rm *.o *~
